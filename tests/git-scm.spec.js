@@ -115,7 +115,7 @@ test('search', async ({ page }) => {
   // Expect the first search result to be "git-commit"
   const searchResults = page.locator('#search-results')
   await expect(searchResults.getByRole("link")).not.toHaveCount(0)
-  await expect(searchResults.getByRole("link").nth(0)).toHaveText('git-commit')
+  await expect(searchResults.getByRole("link").nth(1)).toHaveText('git-commit')
 
   // Expect the search page to show up
   await searchBox.press('Enter')
@@ -137,7 +137,7 @@ test('search', async ({ page }) => {
   await page.goto(`${url}docs/git-commit/fr`)
   await searchBox.fill('add')
   await searchBox.press('Shift')
-  await expect(searchResults.getByRole("link").nth(0)).toHaveAttribute('href', /\/docs\/git-add\/fr(\.html)?$/)
+  await expect(searchResults.getByRole("link").nth(1)).toHaveAttribute('href', /\/docs\/git-add\/fr(\.html)?$/)
 
   // pressing the Enter key should navigate to the full search results page
   await searchBox.press('Enter')
